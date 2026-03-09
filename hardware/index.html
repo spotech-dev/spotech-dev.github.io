@@ -19,103 +19,136 @@
     });
 </script>
 <body>
-    <div id="stuff" class="infobox" style="width:100vw; justify-content: center; flex-direction: row; flex-wrap: wrap; top: 70px;">
-        <div class="minifull" style="height: 50px; display: flex; justify-content: center; flex-wrap: nowrap;">
-            <button id="personalbutton" class="menuSelect" style="background-color: rgba(var(--yellow), 0.75); color: white;" onclick="personalclick()">Personal</button>
-            <hr style="border-color: rgba(0, 0, 0, 0); margin:1%">
-            <button id="schoolbutton" class="menuSelect" onclick="schoolclick()">School</button>
-        </div>
-        <div id="school" style="display: none;">
-            <section class="minifull" id="Purple F1">
-                <img src="/hardware/assets/ThePurpleF1/Car_and_Remote.jpg" alt="The Purple F1" class="bigimg" style="width: 400px; border-radius: 10px;">
-                <div style="display: flex; flex-direction: column;">
-                    <h1 style="height: 5px; padding-left: 10px;">Purple F1 | The F1 Rc Car</h1>
-                    <br>
-                    <a href="https://github.com/SpotechYT/thepurplef1" style="padding-left: 10px;">GitHub: https://github.com/SpotechYT/thepurplef1</a>
-                    <br>
-                    <p style="padding-left: 10px;">For my final project in Circuit Design, my team went above and beyond, fixing and upgrading an old RC our teacher
-                        had lying around. We first got it running using the original parts, reparing many broken pices with 3D printed replacements, then upgraded it using a Raspberry Pi
-                        to control it using my laptop. After restoring the car, we were able to hit speeds upwards of 40 MPH!
-                    </p>
-                </div>
-            </section>
-        </div>
-        <div id="personal" style="display: block;">
-            <section class="minifull" id="MiniBike">
-                <img src="/hardware/assets/MiniBike_2.jpg" alt="MX350" class="bigimg" style="width: 400px; border-radius: 10px;">
-                <div style="display: flex; flex-direction: column;">
-                    <h1 style="height: 5px; padding-left: 10px;">MX350 | The Cyberbike</h1>
-                    <br>
-                    <a href="https://www.youtube.com/watch?v=ovB2ah-TwIY" style="padding-left: 10px;">The old Build: https://www.youtube.com/watch?v=ovB2ah-TwIY</a>
-                    <br>
-                    <p style="padding-left: 10px;">One of my first project was modifying my Razor MX350. It started simple with a few cosmetic changes, as show in the
-                        YouTube video. Recently, I wanted to revive the build, and did a whole rehaul, with a new controller, bigger batteries, and a Cyberpunk look.
-                </div>
-            </section>
-            <section class="minifull" id="Wii">
-                <img src="/hardware/assets/Wii.png" alt="Wii" class="bigimg" style="width: 400px; border-radius: 10px;">
-                <div style="display: flex; flex-direction: column;">
-                    <h1 style="height: 5px; padding-left: 10px;">Gaming Wii | A Custom Nintendo Wii</h1>
-                    <br>
-                    <a href="https://www.youtube.com/watch?v=PCNuCNSvfWs" style="padding-left: 10px;">Timelapse: https://www.youtube.com/watch?v=PCNuCNSvfWs</a>
-                    <br>
-                    <p style="padding-left: 10px;">I found a wii at a garage sale for cheap, and like everything else that enters my hands, I decided to modify it.
-                        I painted the case, added acrylic to see the spinning CD inside with some accent lights, and even added a custom firmware with a red launcher theme to match.
-                        The wii was my childhood console, and I wanted to give it a new life, in the form of a gaming pc.
-                </div>
-            </section>
-            <section class="minifull" id="Amiibo">
-                <img src="/hardware/assets/Amiibos.png" alt="Amiibos" class="bigimg" style="width: 400px; border-radius: 10px;">
-                <div style="display: flex; flex-direction: column;">
-                    <h1 style="height: 5px; padding-left: 10px;">Custom Amiibos | Saving money in style</h1>
-                    <br>
-                    <a href="https://www.youtube.com/watch?v=YOoBAllpzA8" style="padding-left: 10px;">Tutorial: https://www.youtube.com/watch?v=YOoBAllpzA8</a>
-                    <br>
-                    <p style="padding-left: 10px;">I used to play Breath of The Wild a lot when I was younger, and there were some huge advantages to Amiibos that I wanted without
-                        paying the price tag. So instead, I bought cheap NFC stickers online for $1 each and made them into Amiibos using an app on my phone. To top it all off, I 3D
-                        printed some custom cases for them to make them look like the real thing, as well as some chip styled Amiibos to save space and keep them with my switch's carying case.
-                </div>
-            </section>
-            <section class="minifull" id="YouTube">
-                <img src="/hardware/assets/YouTube.png" alt="YouTube" class="bigimg" style="width: 400px; border-radius: 10px;">
-                <div style="display: flex; flex-direction: column;">
-                    <h1 style="height: 5px; padding-left: 10px;">SpotechYT | My YouTube Channel</h1>
-                    <br>
-                    <a href="https://youtube.com/@SpotechYT" style="padding-left: 10px;">https://youtube.com/@SpotechYT</a>
-                    <br>
-                    <p style="padding-left: 10px;">I've made a lot of hardware projects, too, but I can't talk about all of them in detail here.
-                        If you're intrested I post videos showing time lapses of my projects on my YouTube channel as well as some tutorials.
-                </div>
-            </section>
-        </div>
-        <footer>
-            <h3>Made with Determination by Haniel Mikhaiel</h3>
-        </footer>
+  <canvas id="spaceMesh" aria-hidden="true"></canvas>
+
+  <div id="stuff" class="infobox page-wrap">
+    <div class="minifull tabs-row section-header">
+      <div class="section-title">
+        <h1 class="section-heading">Hardware</h1>
+        <p class="section-lead">A list of my favorite hardware projects over the years, from PCBs to 3D printing and everything in between.
+        </p>
+      </div>
     </div>
+
+    <div id="personal" class="section-list" style="display:block;">
+
+      <section class="minifull project-row gravity-rect" id="STM32">
+        <img class="bigimg" src="/hardware/assets/STM32/BMS.gif" alt="BMS Integration">
+        <div class="project-text">
+          <h1>STM32 Development Board & BMS Integration</h1>
+          <div class="links">
+            <a href="https://aztecelectricracing.sdsu.edu/">Created for Aztec Electric Racing</a>
+          </div>
+          <p>
+            On our team, almost all programable boards on the car were based on off-the-shelf microcontrollers like Arduinos and
+            ESP32s. One of our priorities this year is to migrate from off the shelf boards to custom STM32 setups for many
+            reasons. First, having an integrated STM32 in our boards reduces compatability issues and allows for lower level
+            control of the chip. Secondly, off-the-shelf microcontrollers like the Arduino have a lot of extra components that not
+            only take up more space, but also draw a lot more unnecesary power. I was one of the main people on this project,
+            namely designing, layout out, and validating a development board bassed on the STM32F4 chip. After that success, I was
+            assigned to integrate my design into the Battery Management System (BMS) board. This was a success, with the board
+            validated and I even went as far as programing a serial monitor onto the built in USB-C port in a simple program that
+            blinks an LED and prints the state of it in the serial monitor.
+          </p>
+        </div>
+      </section>
+
+      <section class="minifull project-row gravity-rect" id="MiniBike">
+        <img class="bigimg" src="/hardware/assets/MiniBike/MiniBike_2.jpg" alt="MX350 Cyberbike">
+        <div class="project-text">
+          <h1>The Cyberbike MX350</h1>
+          <div class="links">
+            <a href="https://www.youtube.com/watch?v=ovB2ah-TwIY">
+              The Original Build: https://www.youtube.com/watch?v=ovB2ah-TwIY
+            </a>
+          </div>
+          <p>
+            One of my first major hardware projects was modifying my Razor MX350. It began with a few cosmetic upgrades, as
+            shown in the YouTube video.
+            Recently, I revived the build and completely rehauled it with a new motor controller, upgraded battery system, and
+            a redesigned Cyberpunk-inspired aesthetic.
+          </p>
+        </div>
+      </section>
+
+      <section class="minifull project-row gravity-rect" id="Wii">
+        <img class="bigimg" src="/hardware/assets/Wii/Thumbnail.png" alt="Custom Nintendo Wii">
+        <div class="project-text">
+          <h1>Custom Nintendo Wii</h1>
+          <div class="links">
+            <a href="https://www.youtube.com/watch?v=PCNuCNSvfWs">YouTube: https://www.youtube.com/watch?v=PCNuCNSvfWs</a>
+          </div>
+          <p>
+            I rescued a Nintendo Wii from a garage sale and gave it a second life. The project includes a painted case,
+            acrylic window to showcase the spinning disc with accent lighting, and custom firmware featuring a red launcher
+            theme to match the design. I also adapted the internals so the Wii can function as a compact gaming PC—combining
+            nostalgia with modern upgrades.
+          </p>
+        </div>
+      </section>
+
+      <section class="minifull project-row gravity-rect" id="PurpleF1">
+        <img class="bigimg" src="/hardware/assets/ThePurpleF1/Car_and_Remote.jpg" alt="Purple F1">
+        <div class="project-text">
+          <h1>Purple F1</h1>
+          <div class="links">
+            <a href="https://github.com/spotech-dev/thepurplef1">GitHub: https://github.com/spotech-dev/thepurplef1</a>
+          </div>
+          <p>
+            For my final project in Circuit Design, my team went above and beyond, fixing and upgrading an old RC our teacher
+            had lying around. We first got it running using the original parts, reparing many broken pices with 3D printed
+            replacements, then upgraded it using a Raspberry Pi to control it using my laptop. After restoring the car, we
+            were able to hit speeds upwards of 40 MPH!
+          </p>
+        </div>
+      </section>
+
+      <section class="minifull project-row gravity-rect" id="Amiibo">
+        <img class="bigimg" src="/hardware/assets/Amiibos/Thumbnail.png" alt="Custom Amiibos">
+        <div class="project-text">
+          <h1>Custom Amiibos | Saving Money in Style</h1>
+          <div class="links">
+            <a href="https://www.youtube.com/watch?v=YOoBAllpzA8">
+              YouTube: https://www.youtube.com/watch?v=YOoBAllpzA8
+            </a>
+          </div>
+          <p>
+            While playing <em>The Legend of Zelda: Breath of the Wild</em>, I wanted access to the advantages Amiibos provide
+            without paying the premium price.
+            I purchased inexpensive NFC stickers and programmed them using a mobile app to function as Amiibos. To
+            elevate the project, I 3D printed custom cases to resemble official figures, along with compact “chip-style”
+            Amiibos designed to fit neatly inside my Switch carrying case.
+          </p>
+        </div>
+      </section>
+
+      <section class="minifull project-row gravity-rect" id="YouTube">
+        <img class="bigimg" src="/hardware/assets/YouTube.png" alt="SpotechYT YouTube Channel">
+        <div class="project-text">
+          <h1>More Projects on my Channel!</h1>
+          <div class="links">
+            <a href="https://youtube.com/spotech-dev">
+              https://youtube.com/spotech-dev
+            </a>
+          </div>
+          <p>
+            I’ve worked on many additional hardware projects that aren’t fully documented here.
+            On my YouTube channel, I share time-lapse builds, behind-the-scenes progress, and tutorials
+            covering my projects and development process.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <h3 id="year">Made with Determination • Haniel Mikhaiel, </h3>
+  </footer>
+  <script>
+    document.getElementById("year").textContent += new Date().getFullYear();
+  </script>
 </body>
+<script src="/SpaceTime.js"></script>
 <div id="navbar"></div>
-
-<script>
-    function schoolclick() {
-        document.getElementById('personal').style.display = "none";
-        document.getElementById('school').style.display = "block";
-
-        document.getElementById('schoolbutton').style.backgroundColor = "rgba(var(--yellow), 0.75)";
-        document.getElementById('schoolbutton').style.color = "white";
-
-        document.getElementById('personalbutton').style.color = "rgb(var(--yellow))";
-        document.getElementById('personalbutton').style.backgroundColor = "rgb(var(--midgrey))";
-    };
-
-    function personalclick() {
-        document.getElementById('personal').style.display = "block";
-        document.getElementById('school').style.display = "none";
-
-        document.getElementById('personalbutton').style.color = "white";
-        document.getElementById('personalbutton').style.backgroundColor = "rgba(var(--yellow), 0.75)";
-
-        document.getElementById('schoolbutton').style.color = "rgb(var(--yellow))";
-        document.getElementById('schoolbutton').style.backgroundColor = "rgb(var(--midgrey))";
-    };
-</script>
 </html>

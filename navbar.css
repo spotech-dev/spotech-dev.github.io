@@ -13,8 +13,10 @@ nav {
     width: 99.75%;
     height: 50px;
 
-    background-color: rgba(var(--grey), 0.1);
-    backdrop-filter: blur(10px);
+    background-color: rgba(10, 10, 10, 0.30);
+    backdrop-filter: blur(10px) saturate(1.05);
+
+    z-index: 9999;
 }
 
 nav a {

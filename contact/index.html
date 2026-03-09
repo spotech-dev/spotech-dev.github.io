@@ -1,58 +1,133 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="utf-8" />
-    <title>Contact | Spotech.dev</title>
-    <link rel="icon" type="image/png" href="/assets/favicon.png">
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" type="text/css" href="/navbar.css">
-    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <title>Contact | Spotech.dev</title>
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="stylesheet" type="text/css" href="/navbar.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
+
 <script>
-    $(function () {
-      $("#navbar").load("/navbar.html");
-    });
+  $(function () {
+    $("#navbar").load("/navbar.html");
+  });
 </script>
-<body style="margin-top: 100px;">
-    <div class="contact-stuff">
-        <div style="max-width: 25vw; padding: 50px;">
-            <img src="/assets/Little_Engineer.jpg" style="width: 100%; border-radius: 10px;">
-        </div>
-        <div style="max-width: 40vw; padding: 50px;">
-            <h1>Hello World!</h1>
-            <p>I love to connect with the world and gain new connections and opportunities! feel free to reach ou and I'll get back to you soon!</p>
-            <div class="">
-                <a href="mailto:hanielmikhaiel@spotech.dev"><u><b>hanielmikhaiel@spotech.dev</b></u></a>
-            </div>
-        </div>
-        <div class="contact-form">
-            <form action="https://send.pageclip.co/NxaWogSXaTfmXuybNvEO0G5ObIwiC9CT/contact-me" class="pageclip-form" method="post">
-                <input type="text" name="name" placeholder="Name" required/>
-                <input type="email" name="email" placeholder="Email" required/>
-                <input id="subject-input" type="text" name="subject" placeholder="Subject" required/>
-              
-                <!-- This button will have a loading spinner. Keep the inner span for best results. -->
-                <button type="submit" class="pageclip-form__submit">
-                  <span>Send</span>
-                </button>
-            </form>
-        </div>
+
+<body>
+  <canvas id="spaceMesh" aria-hidden="true"></canvas>
+
+  <!-- Content -->
+  <main class="infobox page-wrap contact-wrap">
+    <!-- Header (matches your other pages) -->
+    <div class="minifull section-header">
+      <div class="section-title">
+        <h1 class="section-heading">Contact</h1>
+        <p class="section-lead">
+          I’m always happy to connect — whether it’s an opportunity, a project idea, or just to say hi!
+        </p>
+      </div>
     </div>
 
-    <footer>
-        <h3>Made with Determination by Haniel Mikhaiel</h3>
-    </footer>
+    <!-- Contact card -->
+    <section class="minifull project-row gravity-rect contact-card" id="ContactCard">
+      <img class="bigimg" src="/assets/Little_Engineer.jpg" alt="Haniel portrait">
+      <div class="project-text">
+        <h1>Hello World!</h1>
+        <p>
+          I'm a Computer Engineering stundent at San Diego State University, class of 2028. Growing up, I first started
+          programing due to it's ease of access and vast possibilities. During covid, I started soldering and playing with
+          microcontrollers in my free time, building some of the projects showcased on this website. Towards the end of High
+          School, I got into circuits and thats when I decided to pursue Computer Engineering in college. Today, I do a lot of
+          circuit design and validation, especially with SDSU's Formula FSAE team, AER. I have a passion for learning and
+          building, and I'm always looking for new opportunities to grow and connect with others in the tech community.
+        </p>
+        <br>
+        <p>
+          I also love cars, motorcycles, and go karts, and have a small collection of project vehicles that I work on in my garage. I enjoy
+          sharing my projects and experiences on YouTube, where I post build videos, tutorials, and other content related to my work and hobbies.
+          I've done lots of work on cars, from custom headlights, tailights, gauge clusters, and headunits to heavy mechanicl work like replacing head gaskets and clutches.
+        </p>
+      </div>
+    </section>
 
-    <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
+    <!-- Links card -->
+    <section class="minifull project-row gravity-rect contact-links" id="Links">
+      <div class="project-text">
+        <h1>Links</h1>
+        <p>Find my work and profiles here:</p>
+
+        <div class="contact-grid">
+          <a class="contact-link" href="https://www.linkedin.com/in/haniel-mikhaiel-a11506374/">
+            <i class="ri-linkedin-box-fill"></i>
+            <div>
+              <div class="contact-title">LinkedIn</div>
+              <div class="contact-sub">Connect + Experience</div>
+            </div>
+          </a>
+
+          <a class="contact-link" href="mailto:haniel@spotech.dev">
+            <i class="ri-mail-fill"></i>
+            <div>
+              <div class="contact-title">Email</div>
+              <div class="contact-sub">haniel@spotech.dev</div>
+            </div>
+          </a>
+
+          <a class="contact-link" href="https://docs.google.com/document/d/11wu0_IqU3xA8ZZEiTCQEZ06Hhpuc-iCJmPWvqOqilqU/export?format=pdf">
+            <i class="ri-file-text-fill"></i>
+            <div>
+              <div class="contact-title">Resume</div>
+              <div class="contact-sub">PDF download</div>
+            </div>
+          </a>
+
+          <a class="contact-link" href="https://github.com/spotech-dev">
+            <i class="ri-github-fill"></i>
+            <div>
+              <div class="contact-title">GitHub</div>
+              <div class="contact-sub">Code + Repos</div>
+            </div>
+          </a>
+
+          <a class="contact-link" href="https://www.youtube.com/@spotech-dev">
+            <i class="ri-youtube-fill"></i>
+            <div>
+              <div class="contact-title">YouTube</div>
+              <div class="contact-sub">Build Videos + Tutorials</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="minifull project-row gravity-rect" id="Resume">
+      <div class="project-text">
+        <h1>Resume</h1>
+        <div class="resume-embed">
+          <iframe src="https://docs.google.com/document/d/11wu0_IqU3xA8ZZEiTCQEZ06Hhpuc-iCJmPWvqOqilqU/preview" width="100%"
+            height="700px" style="border: none; border-radius: 12px;">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <h3 id="year">Made with Determination • Haniel Mikhaiel, </h3>
+  </footer>
+  <script>
+    document.getElementById("year").textContent += new Date().getFullYear();
+  </script>
 </body>
+<script src="/SpaceTime.js"></script>
 <div id="navbar"></div>
-
-<script src="/Spotlight.js"></script>
-<script src="/typewriter.js"></script>
 </html>

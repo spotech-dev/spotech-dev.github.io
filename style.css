@@ -3,26 +3,382 @@
     --grey: 32, 32, 32;
     --midgrey: 27, 27, 27;
     --darkgrey: 20, 22, 23;
-    --font-mono: "SF Mono","Fira Code","Fira Mono","Roboto Mono",monospace;
+    --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+
+    /* Add the missing tokens your new UI uses */
+    --text: rgba(255, 255, 255, 0.92);
+    --muted: rgba(255, 255, 255, 0.70);
+    --faint: rgba(255, 255, 255, 0.45);
+
+    --border: rgba(255, 255, 255, 0.10);
+    --border2: rgba(255, 255, 255, 0.08);
 }
 
-html, body {
+html,
+body {
     max-width: 100%;
     overflow-x: hidden;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin: 0;
+    padding: 0;
 }
 
+/* Basic styling for the whole website*/
 body {
     font-family: 'heebo';
     background-color: rgb(var(--darkgrey));
     color: rgb(var(--yellow));
 }
 
+/* Canvas as full-screen background */
+#spaceMesh {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+/* Foreground overlay layout */
+.overlay {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    grid-template-columns: minmax(260px, 360px) 1fr;
+    align-items: center;
+    gap: 64px;
+
+    padding: clamp(16px, 4vw, 56px);
+    padding-left: 64px;
+
+    height: 100vh;
+    box-sizing: border-box;
+
+    /* IMPORTANT: let canvas still receive mouse when needed */
+    pointer-events: none;
+}
+
+.hero,
+.projects-panel {
+    pointer-events: auto;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: 0;
+    height: 100%;
+}
+
+/* Planet UI */
+.planet-ui {
+    width: min(360px, 46vw);
+    aspect-ratio: 1/1;
+    border-radius: 999px;
+    background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03));
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    display: grid;
+    place-items: center;
+    padding: 26px;
+    text-align: center;
+    user-select: none;
+    cursor: default;
+    transform: translateZ(0);
+}
+
+#heroPlanet.planet-ui {
+    background-color: rgba(0, 0, 0, 0.30);
+    backdrop-filter: none;
+}
+
+.planet-inner {
+    max-width: 260px;
+}
+
+.brand {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 750;
+    letter-spacing: 0.5px;
+    color: rgb(var(--yellow));
+}
+
+.tagline {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.hero-links {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.btn.ghost {
+    background: transparent;
+}
+
+.mini {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    color: var(--faint);
+    font-size: 12px;
+}
+
+/* Projects panel (used on homepage overlay) */
+.projects-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 22px;
+    box-sizing: border-box;
+
+    background: rgba(0, 0, 0, 0.30);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+}
+
+.panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 4px 6px 10px 6px;
+}
+
+.panel-head h2 {
+    margin: 0;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    color: rgb(var(--yellow));
+}
+
+.small-link {
+    color: var(--muted);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.small-link:hover {
+    color: var(--text);
+}
+
+.project-card {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    padding: 12px 12px;
+    margin-top: 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.project-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.project-card .title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.project-card .desc {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.project-card .meta {
+    margin-top: 10px;
+    color: var(--faint);
+    font-size: 12px;
+}
+
+/* ===== Carousel (homepage projects) ===== */
+.carousel {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+    /* space for scrollbar */
+    scroll-snap-type: x mandatory;
+}
+
+.carousel-item {
+    flex: 0 0 70%;
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 260px;
+    /* does NOT change panel height */
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent);
+    color: white;
+}
+
+/* ===== NON-HOMEPAGE PAGES (your old layout) =====
+   These classes match your original structure and preserve layout. */
+   
+.infobox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-top: 70px;
+    /* replaces inline top:70px */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.tabs-row {
+    justify-content: center;
+    /* centers horizontally */
+    align-items: center;
+    gap: 16px;
+}
+
+/* Your project rows */
+.minifull {
+    width: min(1200px, calc(100vw - 64px));
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 18px;
+
+    padding: 18px;
+    box-sizing: border-box;
+
+    background: rgba(0, 0, 0, 0.30);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.40);
+
+    margin-bottom: 12px;
+}
+
+/* Image style used on those pages */
+.bigimg {
+    width: 400px;
+    /* matches your inline width */
+    max-width: 42vw;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    object-fit: cover;
+    flex: 0 0 auto;
+}
+
+/* Headings/paragraphs inside your old rows (even if you keep some inline padding) */
+.minifull h1 {
+    margin: 2px 0 0 0;
+    font-size: 26px;
+    line-height: 1.2;
+    color: rgb(var(--yellow));
+    letter-spacing: 0.2px;
+}
+
+.minifull p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* Links inside rows */
+.minifull a {
+    color: rgb(var(--yellow));
+}
+
+.minifull a:hover {
+    color: var(--text);
+}
+
+/* Menu buttons on old pages */
+.menuSelect {
+    min-width: 280px;
+    max-width: 440px;
+    width: min(38vw, 420px);
+    height: 34px;
+
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    background: rgb(var(--midgrey));
+    color: rgb(var(--yellow));
+
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: background 120ms ease, transform 120ms ease, color 120ms ease;
+}
+
+.menuSelect:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* If you adopt the class toggle approach on non-home pages too */
+.menuSelect.is-active {
+    background: rgba(var(--yellow), 0.75);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Footer */
 footer {
     position: relative;
-    color: white;
+    color: rgba(255, 255, 255, 0.70);
     text-align: center;
     justify-content: center;
     padding-top: 50px;
@@ -31,177 +387,214 @@ footer {
 
     width: 100%;
     bottom: 0px;
-    margin-bottom: 0px;
+    margin: 0;
+    z-index: 1;
 }
 
-section {
-    display: block;
+/* ===== Contact page layout helpers ===== */
+.contact-wrap {
+    padding-top: 80px;
+    /* gives space for navbar */
+    gap: 14px;
 }
 
-.NavClip {
-    padding-top: 50px;
+/* Make the email stand out like your links */
+.contact-card .links a {
+    font-weight: 800;
+    letter-spacing: 0.2px;
 }
 
-.stuff {
+/* ===== Links Grid (clean 2x2 layout) ===== */
+
+.contact-grid {
+    margin-top: 16px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.contact-link {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+
+    padding: 16px 18px;
+    border-radius: 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+
+    color: var(--text);
+    text-decoration: none;
+
+    transition: transform 120ms ease,
+        background 150ms ease,
+        border-color 150ms ease,
+        box-shadow 150ms ease;
 }
 
-.HeyThere {
+.contact-link:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.contact-link i {
+    font-size: 22px;
+    color: rgb(var(--yellow));
+    width: 26px;
+    text-align: center;
+}
+
+.contact-title {
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.contact-sub {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 2px;
+}
+
+/* Mobile stack */
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Resume Section ===== */
+
+#Resume .project-text {
     width: 100%;
 }
 
-.HeyText { 
-    font-size: 10px;
-    white-space: initial;
-    padding-left: 50px;
-    padding-right: 50px;
+.resume-embed {
+    margin-top: 16px;
+
+    width: 100%;
+    height: 850px;
+    /* fills nicely */
+
+    border-radius: 16px;
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
-.infobox{
-    display: flex;
-    padding: 10px;
-    margin-right: 10px;
-    width: fit-content;
-    flex-direction: row;
+.resume-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
-.minifull{
-    display: flex;
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    width: 75vw;
-    flex-direction: row;
-    background-color: rgb(var(--grey));
-    border-radius: 10px;
+/* Responsive: stack links */
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.box-color {
-    background-color: rgb(var(--grey));
-    border-radius: 10px;
-}
-
+/* Responsive */
 @media screen and (max-width: 1000px) {
-    .minifull{
-        display: flex;
-        padding: 10px;
-        margin-bottom: 10px;
-        margin-right: 10px;
-        max-width: 500px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        background-color: rgb(var(--grey));
-        border-radius: 10px;
+    .overlay {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding-left: clamp(16px, 4vw, 56px);
+        gap: 24px;
+    }
+
+    .hero {
+        justify-content: center;
+    }
+
+    .minifull {
+        width: calc(100vw - 28px);
+        flex-direction: column;
     }
 
     .bigimg {
-        width: 500px;
-    }
-    .flexxer {
-        flex-wrap: wrap;
+        width: 100%;
+        max-width: 100%;
     }
 
-    .contact-stuff {
-        flex-wrap: wrap;
+    .menuSelect {
+        width: 44vw;
+        min-width: 140px;
     }
 }
 
-.menuSelect {
-    width: 50%;
-    text-align: center;
-    border-radius: 20px;
-    border-color: rgba(0, 0, 0, 0);
-    background-color: rgb(var(--midgrey));
-    color: rgb(var(--yellow));
+
+:root {
+    --scroll-track: #202324;
+    --scroll-thumb: #454a4d;
+    --scroll-thumb-hover: rgb(var(--gray));
 }
 
-.vl {
-    border-left: 6px solid rgb(var(--yellow));
-    border-right: 6px solid rgb(var(--yellow));
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-left: 10px;
-    width: 0px;
-    background-color: rgb(var(--yellow));
+/* 2) Firefox (site-wide) */
+* {
+    scrollbar-width: thin;
+    /* auto | thin | none */
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
 
-hr {
-    border-color: rgb(var(--yellow));
-}
-
-.contact-stuff {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-.contact-form {
-    justify-content: center;
-    align-items: center;
-
-    width: 50vw;
-}
-
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    border-left: 2px solid rgb(var(--yellow));
-    padding: 50px;
-}
-
-.contact-form input,button {
-    margin: 5px;
-    background-color: rgb(var(--grey));
-    border: 2px solid rgb(var(--yellow));
-    color: rgb(var(--yellow));
-    border-radius: 10px;
-    max-width: 500px;
-    height: 25px;
-}
-
-#subject-input {
-    height: 150px;
-}
-
-#stuff {
-    position: absolute;
-}
-
-::-webkit-scrollbar {
+/* 3) WebKit browsers (Chrome/Edge/Safari/Opera) — site-wide */
+*::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
 }
 
-::-webkit-scrollbar-track {
-    background: #202324;
+*::-webkit-scrollbar-track {
+    background: var(--scroll-track);
     border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #454a4d;
+*::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
     border-radius: 5px;
+
+    border: 2px solid var(--scroll-track);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(var(--yellow));
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-hover);
 }
 
-a:link {
-    text-decoration: none;
-    color: rgb(var(--yellow));
+/* 4) Corner where horizontal + vertical meet (WebKit) */
+*::-webkit-scrollbar-corner {
+    background: var(--scroll-track);
 }
+
+/* 5) Optional: keep scrollbars consistent on touch/overlay scrollbar systems
+      (doesn't force always-visible, just improves behavior) */
+html {
+    scrollbar-gutter: stable both-edges;
+    /* supported in modern Chromium/Firefox */
+}
+
+/* Global link behavior*/
+a:link,
 a:visited {
     text-decoration: none;
     color: rgb(var(--yellow));
 }
+
 a:hover {
-    color: rgb(--grey);
+    color: var(--text);
 }
+
 a:active {
-    text-decoration: none; 
+    text-decoration: none;
     color: rgb(var(--yellow));
 }
 
+/* Fonts */
 @font-face {
     font-family: heebo-black;
     src: url(./Fonts/heeebo/Heebo-Black.ttf);
@@ -223,7 +616,7 @@ a:active {
 @font-face {
     font-family: heebo;
     src: url(./Fonts/heeebo/Heebo-Light.ttf);
-    font-weight: light;
+    font-weight: 300;
 }
 
 @font-face {
@@ -235,12 +628,17 @@ a:active {
 @font-face {
     font-family: heebo;
     src: url(./Fonts/heeebo/Heebo-Regular.ttf);
+    font-weight: 400;
 }
 
 @font-face {
     font-family: heebo;
     src: url(./Fonts/heeebo/Heebo-Thin.ttf);
-    font-weight: lighter;
+    font-weight: 200;
+}
+
+.NavClip {
+    padding-top: 50px;
 }
 
 .unselectable {

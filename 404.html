@@ -2,11 +2,10 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8" />
-    <title>Spotech</title>
-    <link rel="icon" type="image/png" href="./assets/favicon.png">
-    <link rel = "stylesheet" type = "text/css" href="./style.css">
-    <link rel = "stylesheet" type = "text/css" href="./waves.css">
-    <link rel="stylesheet" type="text/css" href="./navbar.css">
+    <title>404 Error | Spotech.dev</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,48 +15,38 @@
 </head>
 <script>
     $(function () {
-      $("#navbar").load("navbar.html");
+      $("#navbar").load("/navbar.html");
     });
 </script>
 <body>
-    <div id="stuff" style="top: 70px;">
-        <section class="infobox" style="width:100vw; justify-content: center;">
-            <div style="display: flex; flex-direction: column;">
-                <center>
-                    <h1 style="font-size: 75px;">404</h1>
-                    <h1 style="font-size: 75px;">ERROR</h1>
-                    <p style="font-size: 30px;">I think you broke something...try another page before you break everyting!</p>
-                    <p>You can't pick another page to be at?!? It's not that hard...</p>
-                    <p>Please leave, it's too dangerous to stay here...</p>
-                    <p>Fine, go to the <a href="./index.html"><strong>HOME</strong></a> page</p>
-                    <p>Why are you still here? I literaly told you where to go</p>
-                    <p>What you don't like my home page? Ok, <a id="RickLINK" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><strong>THIS</strong></a> is a cooler page :)</p>
-                    <p id="RickHAHA" style="visibility: hidden;">Haha you fell for it. Get Rick Rolled. You deserve it because you don't like my home page XD</p>
-                </center>
+    <canvas id="spaceMesh" aria-hidden="true"></canvas>
+
+    <div id="stuff" class="infobox page-wrap">
+        <section class="minifull project-row gravity-rect" id="NotFound">
+            <div class="project-text" style="text-align:center; width:100%;">
+                <h1 style="font-size:32px;">404: Page not Found</h1>
+                <p style="max-width:600px; margin: 10px auto;">
+                    The page you're looking for doesn't exist or has been moved.
+                </p>
+    
+                <div class="hero-links" style="justify-content:center; margin-top:20px;">
+                    <a class="btn" href="/">
+                        <i class="ri-home-4-fill" style="margin-right:8px;"></i>
+                        Go Home
+                    </a>
+                </div>
             </div>
         </section>
-        
-        <div id="bottom">
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-                <defs>
-                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                </defs>
-                <g class="parallax">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(149, 121, 13,0.7)" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(149, 121, 13,0.5)" />
-                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(226,183,20,0.3)" />
-                    <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(226,183,20,0.7)" />
-                </g>
-            </svg>
-        </div>
+    
     </div>
-</body>
-<div id="navbar"></div>
 
-<script>
-    document.getElementById('RickLINK').onclick=function(){
-        document.getElementById('RickHAHA').style.visibility = "";
-    };
-</script>
+    <footer class="footer">
+        <h3 id="year">Made with Determination • Haniel Mikhaiel, </h3>
+    </footer>
+    <script>
+        document.getElementById("year").textContent += new Date().getFullYear();
+    </script>
+</body>
+<script src="/SpaceTime.js"></script>
+<div id="navbar"></div>
 </html>

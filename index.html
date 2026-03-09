@@ -19,6 +19,7 @@
     });
 </script>
 <body>
+<<<<<<< Updated upstream
     <div id="HeyThere">
         <canvas id="circles" style="position: absolute; top: 0;">
             Most browsers suppport canvases, so why doesn't yours?
@@ -31,6 +32,87 @@
     
 </body>
 <div id="navbar"></div>
+=======
+    <canvas id="spaceMesh" aria-hidden="true"></canvas>
+>>>>>>> Stashed changes
 
-<script src="/Spotlight.js"></script>
+    <main class="overlay">
+        <section class="hero">
+            <div class="planet-ui" id="heroPlanet">
+                <div class="planet-inner">
+                    <div class="brand">Haniel M</div>
+                    <div class="tagline">PCB Designer, Inventor, and Car Guy</div>
+    
+                    <div class="hero-links">
+                        <a class="btn" href="https://www.linkedin.com/in/haniel-mikhaiel-a11506374/">
+                            <i class="ri-linkedin-box-fill"
+                                style="font-size:16px; margin-right:8px; vertical-align:middle; color:rgb(var(--yellow));"></i>
+                            LinkedIn
+                        </a>
+
+                        <a class="btn" href="https://docs.google.com/document/d/11wu0_IqU3xA8ZZEiTCQEZ06Hhpuc-iCJmPWvqOqilqU/export?format=pdf">
+                            <i class="ri-file-text-fill"
+                                style="font-size:16px; margin-right:8px; vertical-align:middle; color:rgb(var(--yellow));"></i>
+                            Resume
+                        </a>
+                    </div>
+    
+                    <div class="mini">
+                        <span>CompE @ SDSU, 2028</span>
+                        <span>•</span>
+                        <span>San Diego, CA</span>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <aside class="projects-panel gravity-rect" aria-label="Featured projects">
+        
+            <div class="panel-head">
+                <h2>My Favorite Projects</h2>
+            </div>
+        
+            <div class="carousel">
+                <a href="/hardware#STM32" class="carousel-item">
+                    <img src="/hardware/assets/STM32/DevBoard (2).jpg" alt="STM32">
+                    <div class="carousel-caption">
+                        <div class="title">STM32 Development Board & BMS Integration</div>
+                    </div>
+                </a>
+
+                <a href="/garage#YamahaRiva" class="carousel-item">
+                    <img src="/garage/assets/Riva/Riva.jpg" alt="YamahaRiva">
+                    <div class="carousel-caption">
+                        <div class="title">1985 Yamaha Riva Rebuild</div>
+                    </div>
+                </a>
+
+                <a href="/garage#AcuraTL" class="carousel-item">
+                    <img src="/garage/assets/TL/TL-rear.JPG" alt="AcuraTL">
+                    <div class="carousel-caption">
+                        <div class="title">2004 Acura TL</div>
+                    </div>
+                </a>
+
+                <a href="/software#Serika" class="carousel-item">
+                    <img src="/software/assets/serika/Desktop.png" alt="Serika">
+                    <div class="carousel-caption">
+                        <div class="title">Serika Dark Theme</div>
+                    </div>
+                </a>
+            </div>
+        
+        </aside>
+    </main>
+    
+    <footer class="footer">
+        <h3 id="year">Made with Determination • Haniel Mikhaiel, </h3>
+    </footer>
+    <script>
+        document.getElementById("year").textContent += new Date().getFullYear();
+    </script>
+</body>
+<script src="/SpaceTime.js"></script>
+<div id="navbar"></div>
 </html>
