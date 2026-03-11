@@ -20,7 +20,7 @@ let radius = 10;                // node radius
 let lineWidth = radius / 4;     // mesh line width
 let spacing = 50;               // space between nodes
 
-let lineColor = "#474747ff";  // mesh line color
+let lineColor = "#5d5d5dff";  // mesh line color
 let nodeColor = lineColor;      // node fill color
 
 let showLines = true;          // show mesh lines
