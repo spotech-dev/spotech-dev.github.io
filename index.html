@@ -23,10 +23,12 @@
 
     <main class="overlay">
         <section class="hero">
-            <div class="planet-ui" id="heroPlanet" style="position:relative; overflow:hidden;">
-                <img id="linkedinProfilePhoto" alt="Haniel M profile photo" referrerpolicy="no-referrer"
-                    style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%; opacity:.42; z-index:0;">
-                <div class="planet-inner" style="position:relative; z-index:1;">
+            <div class="planet-ui" id="heroPlanet">
+                <div class="planet-inner">
+                    <div class="profile-picture-wrap" aria-label="Haniel M profile picture">
+                        <span class="profile-picture-fallback" aria-hidden="true">HM</span>
+                        <img class="profile-picture" src="/assets/linkedin-profile.jpg" alt="Haniel M profile picture" onerror="this.style.display='none'">
+                    </div>
                     <div class="brand">Haniel M</div>
                     <div class="tagline">PCB Designer, Inventor, and Car Guy</div>
     
@@ -83,7 +85,7 @@
                 </a>
 
                 <a href="/software#Serika" class="carousel-item">
-                    <img src="/assets/SerikaDark.png" alt="Serika">
+                    <img src="/assets/SerikaDark.png" alt="Serika Dark Theme">
                     <div class="carousel-caption">
                         <div class="title">Serika Dark Theme</div>
                     </div>
@@ -98,17 +100,6 @@
     </footer>
     <script>
         document.getElementById("year").textContent += new Date().getFullYear();
-    </script>
-    <script src="/assets/profile.js"></script>
-    <script>
-        // Fetch the configured LinkedIn CDN image on every page load.
-        // The CDN URL itself is centralized in /assets/profile.js because LinkedIn
-        // does not expose a public browser API for resolving a profile's current photo.
-        const profilePhoto = document.getElementById("linkedinProfilePhoto");
-        if (profilePhoto && window.LINKEDIN_PROFILE_IMAGE) {
-            profilePhoto.src = window.LINKEDIN_PROFILE_IMAGE;
-            profilePhoto.onerror = () => profilePhoto.remove();
-        }
     </script>
 </body>
 <script src="/SpaceTime.js"></script>
