@@ -73,9 +73,9 @@ body {
 
 .profile-picture-wrap {
     position: relative;
-    width: 116px;
-    height: 116px;
-    margin: 0 auto 8px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 12px;
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid rgba(var(--yellow), 0.9);
@@ -141,14 +141,14 @@ body {
 }
 
 .tagline {
-    margin-top: 4px;
+    margin-top: 8px;
     color: var(--muted);
     font-size: 14px;
     line-height: 1.4;
 }
 
 .hero-links {
-    margin-top: 12px;
+    margin-top: 18px;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -177,7 +177,7 @@ body {
 }
 
 .mini {
-    margin-top: 9px;
+    margin-top: 14px;
     display: flex;
     justify-content: center;
     gap: 10px;
