@@ -281,7 +281,7 @@ body {
 
 .carousel-item img {
     width: 100%;
-    height: 260px;
+    height: 500px;
     /* does NOT change panel height */
     object-fit: cover;
     display: block;
